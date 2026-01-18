@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>তাসফি (TasFi) - বিশুদ্ধ পানির নিশ্চয়তা</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #00a8ff;
+            --dark-blue: #0077b6;
+            --light-blue: #e0f7fa;
+            --white: #ffffff;
+            --dark-text: #2d3436;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        body {
+            background-color: #f4f9ff;
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            margin-left: 20px;
+            color: var(--dark-text);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1617404962988-b0d6a45b2d20?auto=format&fit=crop&q=80&w=1600') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+            margin-top: 60px;
+        }
+
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+
+        /* Pricing/Package Section */
+        .pricing { padding: 80px 5%; text-align: center; }
+        .pricing h2 { font-size: 2.5rem; margin-bottom: 40px; color: var(--dark-blue); }
+
+        .price-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .price-card {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .price-card:hover { transform: translateY(-10px); border-color: var(--primary-blue); }
+
+        /* Bottle Image Styling */
+        .bottle-img {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+            margin-bottom: 15px;
+            background: #f9f9f9;
+            border-radius: 15px;
+        }
+
+        .price-card h3 { font-size: 1.4rem; color: #333; }
+        .price-card .amount { font-size: 1.8rem; font-weight: 700; color: var(--dark-blue); margin: 10px 0; }
+
+        .btn {
+            background: var(--primary-blue);
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .btn:hover { background: var(--dark-blue); }
+
+        /* Modal */
+        #orderModal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            justify-content: center; align-items: center;
+        }
+
+        .modal-content {
+            background: white; padding: 30px; border-radius: 15px;
+            width: 90%; max-width: 400px; text-align: center;
+        }
+
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; }
+
+        footer { background: #2d3436; color: white; padding: 50px 5% 20px; margin-top: 50px; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .social-icons a { color: white; font-size: 1.5rem; margin-right: 15px; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">TasFi <i class="fas fa-tint"></i></div>
+        <div class="nav-links">
+            <a href="#">হোম</a>
+            <a href="#pricing">প্যাকেজ</a>
+            <a href="#contact">যোগাযোগ</a>
+        </div>
+        <a href="tel:01410269328" class="btn" style="width: auto;">কল করুন</a>
+    </nav>
+
+    <section class="hero">
+        <h1>বিশুদ্ধ পানির বিশ্বস্ত নাম "তাসফি"</h1>
+        <p>মোহাম্মদপুরে দিচ্ছি উন্নত প্রযুক্তিতে পরিশোধিত ১০০% নিরাপদ মিনারেল ওয়াটার।</p>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <h2>আমাদের পানির প্যাকেজসমূহ</h2>
+        <div class="price-container">
+            
+            <div class="price-card">
+                <img src="unnamed (1).jpg" alt="TasFi 250ml" class="bottle-img">
+                <h3>২৫০ মিলি বোতল</h3>
+                <div class="amount">১০ টাকা</div>
+                <button class="btn" onclick="openModal('২৫০ মিলি')">অর্ডার দিন</button>
+            </div>
+
+            <div class="price-card">
+                <img src="unnamed (1).jpg" alt="TasFi 500ml" class="bottle-img">
+                <h3>৫০০ মিলি বোতল</h3>
+                <div class="amount">১৫ টাকা</div>
+                <button class="btn" onclick="openModal('৫০০ মিলি')">অর্ডার দিন</button>
+            </div>
+
+            <div class="price-card">
+                <img src="unnamed (1).jpg" alt="TasFi 1 Liter" class="bottle-img">
+                <h3>১ লিটার বোতল</h3>
+                <div class="amount">২০ টাকা</div>
+                <button class="btn" onclick="openModal('১ লিটার')">অর্ডার দিন</button>
+            </div>
+
+            <div class="price-card">
+                <img src="unnamed (1).jpg" alt="TasFi 2 Liter" class="bottle-img">
+                <h3>২ লিটার বোতল</h3>
+                <div class="amount">৩০ টাকা</div>
+                <button class="btn" onclick="openModal('২ লিটার')">অর্ডার দিন</button>
+            </div>
+
+            <div class="price-card">
+                <img src="unnamed (1).jpg" alt="TasFi 5 Liter" class="bottle-img">
+                <h3>৫ লিটার বোতল</h3>
+                <div class="amount">৫০ টাকা</div>
+                <button class="btn" onclick="openModal('৫ লিটার')">অর্ডার দিন</button>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>তাসফি - TasFi</h3>
+                <p>মোহাম্মদপুর, ঢাকা। দ্রুত ডেলিভারি পেতে আমাদের কল করুন।</p>
+            </div>
+            <div class="footer-section">
+                <h3>যোগাযোগ</h3>
+                <div><i class="fas fa-phone"></i> ০১৪১০২৬৯৩২৮</div>
+                <div><i class="fas fa-envelope"></i> alfaravi17@gmail.com</div>
+            </div>
+            <div class="footer-section">
+                <h3>অনুসরণ করুন</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-bar" style="text-align:center; padding-top:20px; border-top:1px solid #444; margin-top:20px;">
+            &copy; ২০২৪ তাসফি (TasFi) | www.tasfi.com
+        </div>
+    </footer>
+
+    <div id="orderModal">
+        <div class="modal-content">
+            <h2 id="modalTitle">অর্ডার করুন</h2>
+            <input type="text" placeholder="আপনার নাম">
+            <input type="text" placeholder="মোবাইল নম্বর">
+            <input type="text" placeholder="ডেলিভারি ঠিকানা">
+            <button class="btn" onclick="closeModal()">অর্ডার নিশ্চিত করুন</button>
+            <p onclick="closeModal()" style="color:red; cursor:pointer; margin-top:10px;">বাতিল করুন</p>
+        </div>
+    </div>
+
+    <script>
+        function openModal(item) {
+            document.getElementById('orderModal').style.display = 'flex';
+            document.getElementById('modalTitle').innerText = item + " অর্ডার ফর্ম";
+        }
+        function closeModal() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('orderModal')) closeModal();
+        }
+    </script>
+</body>
+</html>
