@@ -1,0 +1,234 @@
+/* Project: TasFi Premium 
+   Path: C:\Users\hp\OneDrive\Desktop\WebSite\TasFi\css\products.css 
+*/
+
+/* Product Page Layout */
+.product-page {
+    padding-top: 100px;
+    min-height: 100vh;
+    background-color: var(--bg);
+}
+
+.catalog-header {
+    text-align: center;
+    padding: 80px 5% 40px;
+}
+
+.catalog-header h1 {
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 800;
+    margin-top: 15px;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+}
+
+.sub-title {
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 13px;
+    display: block;
+}
+
+/* Filter Pills Section */
+.filter-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+    padding: 0 5%;
+}
+
+.filter-pills {
+    background: #f2f2f7;
+    padding: 6px;
+    border-radius: 50px;
+    display: flex;
+    gap: 8px;
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+.pill {
+    padding: 12px 28px;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: var(--transition);
+    background: transparent;
+    color: var(--text-secondary);
+}
+
+.pill:hover {
+    color: var(--text-primary);
+}
+
+.pill.active {
+    background: #fff;
+    color: var(--accent);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+/* Catalog Grid System */
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    padding: 0 5% 120px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* Advanced Product Card */
+.product-card {
+    background: #fff;
+    border-radius: 36px;
+    padding: 24px;
+    border: 1px solid var(--border);
+    position: relative;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 50px 100px rgba(0,0,0,0.08);
+    border-color: transparent;
+}
+
+.image-box {
+    background: #f9f9fb;
+    border-radius: 28px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    overflow: hidden;
+    position: relative;
+}
+
+.image-box img {
+    height: 75%;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.product-card:hover .image-box img {
+    transform: scale(1.15) rotate(-2deg);
+}
+
+/* Info and Pricing */
+.info-box {
+    padding: 10px 5px;
+    flex-grow: 1;
+}
+
+.info-box h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.info-box p {
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.price-tag {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 25px;
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+}
+
+.price-tag small {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Call to Action Button */
+.order-btn {
+    width: 100%;
+    padding: 18px;
+    border-radius: 20px;
+    border: none;
+    background: var(--text-primary);
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.order-btn::before {
+    content: '\f232'; /* FontAwesome Whatsapp Icon */
+    font-family: 'Font Awesome 6 Brands';
+    font-size: 18px;
+}
+
+.order-btn:hover {
+    background: var(--accent);
+    transform: scale(1.02);
+    box-shadow: 0 10px 25px rgba(0, 113, 227, 0.25);
+}
+
+/* Floating Badges */
+.badge-new, .badge-special {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    padding: 7px 16px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 800;
+    z-index: 10;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.badge-new { 
+    background: #E3FFEB; 
+    color: #24B54B; 
+    border: 1px solid rgba(36, 181, 75, 0.1);
+}
+
+.badge-special { 
+    background: #FFEBE3; 
+    color: #FF6B3D; 
+    border: 1px solid rgba(255, 107, 61, 0.1);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .catalog-header { padding-top: 60px; }
+    .catalog-grid {
+        grid-template-columns: 1fr;
+        padding: 0 6% 80px;
+    }
+    
+    .filter-pills {
+        width: 100%;
+        overflow-x: auto;
+        justify-content: flex-start;
+        white-space: nowrap;
+        padding: 8px 15px;
+    }
+
+    .image-box { height: 220px; }
+}

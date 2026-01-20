@@ -3,324 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TasFi | Premium Hydration Service</title>
+    <title>TasFi | Pure Hydration Reimagined</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;800&family=Hind+Siliguri:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;800&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-
-    <style>
-        :root {
-            --primary: #007AFF;
-            --soft-bg: #FBFBFD;
-            --white: #FFFFFF;
-            --text-main: #1D1D1F;
-            --text-sub: #6E6E73;
-            --card-shadow: 0 20px 40px rgba(0,0,0,0.06);
-            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', 'Hind Siliguri', sans-serif; scroll-behavior: smooth; }
-
-        body { background: var(--soft-bg); color: var(--text-main); overflow-x: hidden; }
-
-        /* Loader & Cursor */
-        #loader { position: fixed; width: 100%; height: 100vh; background: #fff; display: flex; justify-content: center; align-items: center; z-index: 9999; }
-        .drop-loader { width: 15px; height: 15px; background: var(--primary); border-radius: 50% 50% 0 50%; transform: rotate(-45deg); animation: drip 1s infinite; }
-        @keyframes drip { 0% { transform: translateY(-20px) rotate(-45deg); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateY(20px) rotate(-45deg); opacity: 0; } }
-        .cursor-dot { width: 8px; height: 8px; background: var(--primary); position: fixed; border-radius: 50%; pointer-events: none; z-index: 10000; display: none; }
-
-        /* Navigation */
-        nav {
-            padding: 1.2rem 8%; display: flex; justify-content: space-between; align-items: center;
-            position: fixed; width: 100%; top: 0; z-index: 1000;
-            background: rgba(255,255,255,0.8); backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-        .logo { font-size: 1.6rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 8px; text-decoration: none; }
-        .logo i { animation: bounceDrop 2s infinite; }
-        @keyframes bounceDrop { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-
-        /* Hero Section with Background Image */
-        .hero { 
-            position: relative;
-            padding: 220px 10% 120px; 
-            text-align: center; 
-            background: url('https://images.unsplash.com/photo-1617404962988-b0d6a45b2d20?auto=format&fit=crop&q=80&w=2000') no-repeat center center/cover;
-            color: white; /* Text color changed to white for visibility */
-        }
-        
-        /* Dark Overlay to make text pop */
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Adjust opacity if needed */
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.2rem); font-weight: 800; letter-spacing: -2px; line-height: 1.1; margin-bottom: 20px; }
-        .hero span { color: var(--primary); }
-        .hero p { color: #f0f0f0 !important; } /* Lighter text for p tag */
-
-        /* Sections Styling */
-        .section-title { text-align: center; margin: 80px 0 50px; padding: 0 10%; }
-        .section-title h2 { font-size: 2.5rem; letter-spacing: -1px; margin-bottom: 10px; }
-        .section-title p { color: var(--text-sub); }
-
-        /* Pricing & Plans Grid */
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; padding: 0 8% 80px; }
-        .card { background: var(--white); border-radius: 30px; padding: 35px; transition: var(--transition); border: 1px solid rgba(0,0,0,0.03); text-align: center; }
-        .card:hover { transform: translateY(-12px); box-shadow: var(--card-shadow); border-color: var(--primary); }
-        .card img { width: 100%; height: 180px; object-fit: contain; margin-bottom: 20px; }
-        .price { font-size: 2.2rem; font-weight: 800; margin: 15px 0; color: var(--text-main); }
-        .price span { font-size: 1rem; color: var(--text-sub); font-weight: 400; }
-
-        /* Subscription Section */
-        .sub-container { background: #eef5ff; padding: 100px 0; }
-        .plan-features { list-style: none; margin: 20px 0; text-align: left; font-size: 0.9rem; }
-        .plan-features li { margin-bottom: 10px; color: var(--text-sub); }
-        .plan-features i { color: #25D366; margin-right: 8px; }
-
-        /* Testimonials Slider */
-        .testimonials-section { padding: 100px 8%; background: #fff; overflow: hidden; }
-        .swiper { padding: 50px 0 !important; }
-        .t-card { background: var(--soft-bg); padding: 40px; border-radius: 30px; border: 1px solid #eee; text-align: center; height: auto; color: var(--text-main); }
-        .stars { color: #FFCC00; margin-bottom: 15px; }
-
-        /* UI Elements */
-        .smart-btn { background: var(--primary); color: #fff; border: none; padding: 16px 32px; border-radius: 18px; font-weight: 700; width: 100%; cursor: pointer; transition: 0.3s; }
-        .smart-btn:hover { background: #0056b3; box-shadow: 0 10px 20px rgba(0,122,255,0.2); }
-        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; z-index: 1000; box-shadow: 0 10px 25px rgba(37,211,102,0.3); text-decoration: none; }
-
-        /* Modal */
-        #orderModal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); backdrop-filter: blur(15px); z-index: 2000; align-items: center; justify-content: center; }
-        .modal-box { background: #fff; padding: 40px; border-radius: 35px; width: 95%; max-width: 450px; color: var(--text-main); }
-        input { width: 100%; padding: 18px; margin-bottom: 15px; border-radius: 15px; border: 1px solid #E5E5E7; background: #F5F5F7; outline: none; }
-
-        footer { padding: 80px 10% 40px; background: #fff; text-align: center; border-top: 1px solid #eee; }
-
-        @media (max-width: 768px) { .cursor-dot { display: none; } .hero { padding: 180px 8% 80px; } }
-    </style>
+    
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <div id="loader"><div class="drop-loader"></div></div>
-    <div class="cursor-dot"></div>
-
-    <nav>
-        <a href="#" class="logo">TASFI <i class="fas fa-tint"></i></a>
-        <div style="font-weight: 600; font-size: 0.8rem; opacity: 0.7;"><i class="fas fa-certificate" style="color:var(--primary)"></i> ISO CERTIFIED PURITY</div>
-    </nav>
-
-    <section class="hero">
-        <div class="hero-content">
-            <h1 data-aos="fade-up">প্রতিদিন বিশুদ্ধতায় <br><span>রাখুন নিজেকে সতেজ।</span></h1>
-            <p data-aos="fade-up" data-aos-delay="100" style="max-width: 600px; margin: 0 auto 30px;">মোহাম্মদপুরের সবচেয়ে স্মার্ট এবং দ্রুততম ওয়াটার সার্ভিস। আপনার স্বাস্থ্য, আমাদের প্রতিশ্রুতি।</p>
-            <div class="stars" data-aos="fade-up">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <span style="font-weight:700; margin-left:8px;">Trust Score 5.0</span>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-title" data-aos="fade-up">
-        <h2>সরাসরি অর্ডার করুন</h2>
-        <p>সহজ ডেলিভারি মোহাম্মদপুর এলাকার যে কোনো স্থানে।</p>
-    </div>
-    
-    <section class="pricing-grid">
-        <div class="card" data-aos="fade-up">
-            <img src="unnamed (1).jpg" alt="500ml">
-            <h3>TASFI Smart (500ml)</h3>
-            <div class="price">৳১৫</div>
-            <button class="smart-btn" onclick="openModal('৫০০ মিলি')">অর্ডার দিন</button>
-        </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="100">
-            <img src="unnamed (1).jpg" alt="1L">
-            <h3>TASFI Daily (1L)</h3>
-            <div class="price">৳২০</div>
-            <button class="smart-btn" onclick="openModal('১ লিটার')">অর্ডার দিন</button>
-        </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="200">
-            <img src="unnamed (1).jpg" alt="5L">
-            <h3>TASFI Jumbo (5L)</h3>
-            <div class="price">৳৫০</div>
-            <button class="smart-btn" onclick="openModal('৫ লিটার')">অর্ডার দিন</button>
-        </div>
-    </section>
-
-    <section class="sub-container" id="plans">
-        <div class="section-title" data-aos="fade-up">
-            <h2>মাসিক সাবস্ক্রিপশন প্ল্যান</h2>
-            <p>আপনার বাসা বা অফিসের জন্য বেছে নিন সেরা সাশ্রয়ী প্ল্যান।</p>
-        </div>
-
-        <div class="pricing-grid">
-            <div class="card" data-aos="zoom-in">
-                <div style="background:var(--primary); color:white; padding:5px 15px; border-radius:20px; display:inline-block; font-size:0.8rem; margin-bottom:15px;">POPULAR</div>
-                <h3>বাসার সাধারণ প্যাক</h3>
-                <div class="price">৳৫৯৯ <span>/ মাস</span></div>
-                <ul class="plan-features">
-                    <li><i class="fas fa-check"></i> প্রতিদিন ২ বোতল (১ লিটার)</li>
-                    <li><i class="fas fa-check"></i> ফ্রি হোম ডেলিভারি</li>
-                    <li><i class="fas fa-check"></i> কোনো ডেলিভারি চার্জ নেই</li>
-                </ul>
-                <button class="smart-btn" onclick="openModal('সাবস্ক্রিপশন: বাসার সাধারণ')">সাবস্ক্রাইব করুন</button>
-            </div>
-
-            <div class="card" data-aos="zoom-in" data-aos-delay="100">
-                <h3>বড় ফ্যামিলি প্যাক</h3>
-                <div class="price">৳৯৯৯ <span>/ মাস</span></div>
-                <ul class="plan-features">
-                    <li><i class="fas fa-check"></i> প্রতিদিন ৪ বোতল (১ লিটার)</li>
-                    <li><i class="fas fa-check"></i> ফ্রি হোম ডেলিভারি</li>
-                    <li><i class="fas fa-check"></i> স্পেশাল সাপোর্ট</li>
-                </ul>
-                <button class="smart-btn" onclick="openModal('সাবস্ক্রিপশন: ফ্যামিলি প্যাক')">সাবস্ক্রাইব করুন</button>
-            </div>
-
-            <div class="card" data-aos="zoom-in" data-aos-delay="200">
-                <h3>ছোট অফিস প্যাক</h3>
-                <div class="price">৳১৪৯৯ <span>/ মাস</span></div>
-                <ul class="plan-features">
-                    <li><i class="fas fa-check"></i> প্রতিদিন ৬ বোতল (১ লিটার)</li>
-                    <li><i class="fas fa-check"></i> ফিক্সড ডেলিভারি টাইম</li>
-                    <li><i class="fas fa-check"></i> মান্থলি ইনভয়েস</li>
-                </ul>
-                <button class="smart-btn" onclick="openModal('সাবস্ক্রিপশন: অফিস প্যাক')">সাবস্ক্রাইব করুন</button>
-            </div>
-
-            <div class="card" data-aos="zoom-in" data-aos-delay="300">
-                <h3>কর্পোরেট মেগা প্যাক</h3>
-                <div class="price">৳২৯৯৯ <span>/ মাস</span></div>
-                <ul class="plan-features">
-                    <li><i class="fas fa-check"></i> আনলিমিটেড সাপোর্ট</li>
-                    <li><i class="fas fa-check"></i> প্রতিদিন ১৫ বোতল (১ লিটার)</li>
-                    <li><i class="fas fa-check"></i> কাস্টম ডেলিভারি শিডিউল</li>
-                </ul>
-                <button class="smart-btn" onclick="openModal('সাবস্ক্রিপশন: মেগা প্যাক')">সাবস্ক্রাইব করুন</button>
-            </div>
-        </div>
-    </section>
-
-    <section class="testimonials-section">
-        <div class="section-title" data-aos="fade-up">
-            <h2>কাস্টমারদের ভালোবাসা</h2>
-        </div>
+    <div id="main-wrapper">
         
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="t-card">
-                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p>"মোহাম্মদপুরের ভেতর এতো দ্রুত সার্ভিস আর কোথাও দেখিনি। সাবস্ক্রিপশন নেওয়ার পর পানির চিন্তা দূর হয়েছে।"</p>
-                        <h4 style="margin-top:20px;">- তানভীর আহমেদ</h4>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="t-card">
-                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p>"পানির স্বাদ একদম ফ্রেশ এবং বিশুদ্ধ। অফিসের জন্য আমরা তাসফি ছাড়া আর কিছু ভাবি না।"</p>
-                        <h4 style="margin-top:20px;">- শারমিন আক্তার</h4>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="t-card">
-                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p>"হোয়াটসঅ্যাপে মেসেজ দেওয়ার ৩০ মিনিটের মধ্যে ডেলিভারি পেয়েছি। অসাধারণ সার্ভিস!"</p>
-                        <h4 style="margin-top:20px;">- মেহরাব হোসেন</h4>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="t-card">
-                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                        <p>"প্যাকেজিংটা খুব মডার্ন এবং পানি পান করে আমরা সবাই সন্তুষ্ট। সাবস্ক্রিপশন রেটও অনেক সাশ্রয়ী।"</p>
-                        <h4 style="margin-top:20px;">- নুসরাত চৌধুরী</h4>
-                    </div>
+        <section class="hero-premium">
+            <div class="hero-overlay"></div>
+            <div class="hero-content" data-aos="zoom-out">
+                <span class="badge">Pure. Smart. Fast.</span>
+                <h1>পানির বিশুদ্ধতায় <br><span class="gradient-text">নতুন এক বিপ্লব</span></h1>
+                <p>মোহাম্মদপুরের সেরা ড্রিংকিং ওয়াটার সার্ভিস। আমরা শুধু পানি নয়, পৌঁছে দিই সুস্থতার নিশ্চয়তা।</p>
+                <div class="hero-btns">
+                    <a href="products.html" class="primary-btn">পণ্য দেখুন</a>
+                    <a href="#plans" class="secondary-btn">সাবস্ক্রিপশন</a>
                 </div>
             </div>
-            <div class="swiper-pagination"></div>
+        </section>
+
+        <section class="stats-bar">
+            <div class="stat-item" data-aos="fade-up">
+                <h2>10k+</h2>
+                <p>হ্যাপি কাস্টমার</p>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                <h2>100%</h2>
+                <p>ল্যাব সার্টিফাইড</p>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                <h2>15min</h2>
+                <p>ফাস্ট ডেলিভারি</p>
+            </div>
+        </section>
+
+        <section class="featured-preview">
+            <div class="section-header" data-aos="fade-up">
+                <h2>সেরা পছন্দসমূহ</h2>
+                <p>আপনার প্রতিদিনের প্রয়োজনের জন্য সেরা তিনটি প্যাক</p>
+            </div>
+            
+            <div class="preview-grid">
+                <div class="premium-card" data-aos="fade-up">
+                    <div class="card-img">
+                        <img src="1l-removebg-preview.png" alt="500ml">
+                    </div>
+                    <h3>TASFI Smart</h3>
+                    <p>৫০০ মিলি ব্যক্তিগত ব্যবহার</p>
+                    <div class="price">৳১৫</div>
+                    <button class="buy-btn" onclick="quickOrder('৫০০ মিলি')">কিনুন</button>
+                </div>
+
+                <div class="premium-card highlight" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-img">
+                        <img src="1l-removebg-preview.png" alt="1L">
+                    </div>
+                    <h3>TASFI Daily</h3>
+                    <p>১ লিটার ফ্যামিলি প্যাক</p>
+                    <div class="price">৳২০</div>
+                    <button class="buy-btn" onclick="quickOrder('১ লিটার')">কিনুন</button>
+                </div>
+
+                <div class="premium-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-img">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3100/3100566.png" alt="20L">
+                    </div>
+                    <h3>Premium Jar</h3>
+                    <p>২০ লিটার অফিস/বাসা</p>
+                    <div class="price">৳৮০</div>
+                    <button class="buy-btn" onclick="quickOrder('২০ লিটার জার')">কিনুন</button>
+                </div>
+            </div>
+
+            <div class="view-all-link" data-aos="fade-up">
+                <a href="products.html">সবগুলো দেখুন <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </section>
+
         </div>
-    </section>
 
-    <a href="https://wa.me/8801719269328" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
-    <footer>
-        <h2 style="color:var(--primary); letter-spacing: -1px;">TASFI.</h2>
-        <p style="margin: 15px 0; color:var(--text-sub);">Trusted Pure Water | মোহাম্মদপুর, ঢাকা</p>
-        <p>© ২০২৪ তাসফি ড্রিংকিং ওয়াটার | সর্বস্বত্ব সংরক্ষিত</p>
-    </footer>
-
-    <div id="orderModal">
-        <div class="modal-box">
-            <h2 id="modalTitle">অর্ডার নিশ্চিত করুন</h2>
-            <p style="color:var(--text-sub); margin-bottom: 25px; font-size: 0.9rem;">সঠিক তথ্য দিন, আমরা দ্রুত যোগাযোগ করবো।</p>
-            <input type="text" id="custName" placeholder="আপনার নাম">
-            <input type="text" id="custPhone" placeholder="মোবাইল নম্বর">
-            <input type="text" id="custAddr" placeholder="পুরো ঠিকানা (মোহাম্মদপুর)">
-            <button class="smart-btn" onclick="sendToWhatsApp()">WhatsApp-এ অর্ডার পাঠান</button>
-            <p onclick="closeModal()" style="color:red; text-align:center; margin-top:15px; cursor:pointer; font-weight:700;">বন্ধ করুন</p>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 1000, once: true });
-
-        // Swiper Initialization
-        const swiper = new Swiper(".mySwiper", {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            autoplay: { delay: 3000, disableOnInteraction: false },
-            pagination: { el: ".swiper-pagination", clickable: true },
-            breakpoints: {
-                768: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 }
-            }
-        });
-
-        // Loader
-        window.onload = () => {
-            setTimeout(() => document.getElementById('loader').style.display = 'none', 800);
-        };
-
-        // Cursor Dot Logic
-        if(window.innerWidth > 768) {
-            const dot = document.querySelector('.cursor-dot');
-            dot.style.display = 'block';
-            document.addEventListener('mousemove', (e) => {
-                dot.style.left = e.clientX + 'px';
-                dot.style.top = e.clientY + 'px';
-            });
-        }
-
-        function openModal(item) {
-            document.getElementById('orderModal').style.display = 'flex';
-            document.getElementById('modalTitle').innerText = item;
-        }
-        function closeModal() { document.getElementById('orderModal').style.display = 'none'; }
-
-        function sendToWhatsApp() {
-            const name = document.getElementById('custName').value;
-            const phone = document.getElementById('custPhone').value;
-            const addr = document.getElementById('custAddr').value;
-            const product = document.getElementById('modalTitle').innerText;
-
-            if(!name || !phone || !addr) { alert("দয়া করে সব তথ্য দিন!"); return; }
-
-            const msg = `💧 *New TasFi Order* \n\n🔹 *Package:* ${product}\n🔹 *Name:* ${name}\n🔹 *Phone:* ${phone}\n🔹 *Address:* ${addr}`;
-            window.open(`https://wa.me/8801719269328?text=${encodeURIComponent(msg)}`, '_blank');
-            closeModal();
-        }
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>

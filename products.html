@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products | TasFi Premium</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;800&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="css/products.css"> 
+</head>
+<body>
+
+    <main class="product-page">
+        <header class="catalog-header" data-aos="fade-down">
+            <div class="container">
+                <span class="sub-title">Our Collection</span>
+                <h1>সেরা মানের বিশুদ্ধতা, <br><span class="gradient-text">আপনার হাতের নাগালে</span></h1>
+            </div>
+        </header>
+
+        <section class="filter-section" data-aos="fade-up">
+            <div class="filter-pills">
+                <button class="pill active">সব পণ্য</button>
+                <button class="pill">বোতলজাত</button>
+                <button class="pill">জার ও সার্ভিস</button>
+            </div>
+        </section>
+
+        <section class="container catalog-grid">
+            
+            <div class="product-card" data-aos="fade-up">
+                <div class="badge-new">Best Seller</div>
+                <div class="image-box">
+                    <img src="unnamed-removebg-preview.png" alt="500ml Bottle">
+                </div>
+                <div class="info-box">
+                    <h3>TasFi Smart (500ml)</h3>
+                    <p>ট্রাভেল ফ্রেন্ডলি এবং হাই-গ্রেড পিইটি বোতল।</p>
+                    <div class="price-tag">৳১৫</div>
+                    <button class="order-btn" onclick="quickOrder('৫০০ মিলি স্মার্ট বোতল')">অর্ডার করুন</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="image-box">
+                    <img src="unnamed-removebg-preview.png" alt="1L Bottle">
+                </div>
+                <div class="info-box">
+                    <h3>TasFi Daily (1L)</h3>
+                    <p>প্রতিদিনের হাইড্রেশনের জন্য আদর্শ পরিমাপ।</p>
+                    <div class="price-tag">৳২০</div>
+                    <button class="order-btn" onclick="quickOrder('১ লিটার ডেইলি বোতল')">অর্ডার করুন</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="image-box">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3100/3100566.png" alt="20L Jar">
+                </div>
+                <div class="info-box">
+                    <h3>Premium Jar (20L)</h3>
+                    <p>অফিস বা বাসার জন্য রিফিল সার্ভিস।</p>
+                    <div class="price-tag">৳৮০ <small>/ রিফিল</small></div>
+                    <button class="order-btn" onclick="quickOrder('২০ লিটার প্রিমিয়াম জার')">অর্ডার করুন</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-aos="fade-up">
+                <div class="image-box">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2447/2447104.png" alt="200ml Cup">
+                </div>
+                <div class="info-box">
+                    <h3>Event Cup (200ml)</h3>
+                    <p>যেকোনো ইভেন্ট বা গেট-টুগেদারের জন্য।</p>
+                    <div class="price-tag">৳৫ <small>/ পিস</small></div>
+                    <button class="order-btn" onclick="quickOrder('২০০ মিলি ইভেন্ট কাপ')">অর্ডার করুন</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="badge-special">Limited</div>
+                <div class="image-box">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2738/2738805.png" alt="Alkaline">
+                </div>
+                <div class="info-box">
+                    <h3>Alkaline Plus</h3>
+                    <p>শরীরের pH ব্যালেন্স বজায় রাখতে সাহায্য করে।</p>
+                    <div class="price-tag">৳৪০</div>
+                    <button class="order-btn" onclick="quickOrder('অ্যালকালাইন প্লাস বোতল')">অর্ডার করুন</button>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+    </body>
+</html>
